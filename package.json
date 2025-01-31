@@ -1,0 +1,14 @@
+{
+	"name": "typescript-core-extensions",
+	"version": "1.0.0",
+	"description": "An assortment of extensions to TypeScript core types Number, String, Array, Set, and other types to drastically improve DX in everyday operations. Inspired by Swift.",
+	"main": "./index.ts",
+	"types": "./index.ts",
+	"scripts": {},
+	"keywords": [],
+	"author": "August Saint Freytag",
+	"license": "MIT",
+	"devDependencies": {
+		"typescript": "^5"
+	}
+}
