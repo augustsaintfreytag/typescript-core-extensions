@@ -20,6 +20,21 @@ declare global {
 		remove: (predicate: PredicateBlock<K, V>) => Map<K, V>
 		copy: (block?: (map: Map<K, V>) => void) => Map<K, V>
 	}
+
+	interface ReadonlyMap<K, V> {
+		get isEmpty(): boolean
+
+		toKeys(): K[]
+		toKeySet(): Set<K>
+		toValues(): V[]
+		toEntries(): KeyValueTuple<K, V>[]
+
+		includes: (value: V) => boolean
+		find: (predicate: PredicateBlock<K, V>) => KeyValueTuple<K, V> | VoidTuple
+		findKey: (predicate: PredicateBlock<K, V>) => K | undefined
+		filter: (predicate: PredicateBlock<K, V>) => Map<K, V>
+		copy: (block?: (map: Map<K, V>) => void) => Map<K, V>
+	}
 }
 
 Object.defineProperty(Map.prototype, "isEmpty", {
