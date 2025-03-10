@@ -31,6 +31,31 @@ declare global {
 
 		toChunked(chunkSize: number): T[][]
 	}
+
+	interface ReadonlyArray<T> {
+        compact(): NonNullable<T>[]
+        compactMap<U>(block: (element: T, index: number, array: readonly T[]) => U | undefined): U[]
+        flatMap<U>(block: (element: T, index: number, array: readonly T[]) => U[] | undefined): U[]
+        setMap<U>(block: (element: T, index: number, array: readonly T[]) => U | undefined): Set<U>
+        mapFirst<U>(block: (element: T, index: number, array: readonly T[]) => U | undefined): U | undefined
+
+        copy(): T[]
+
+        reversed(): T[]
+        sorted(block?: (lhs: T, rhs: T) => number): T[]
+        sortedByProperty(block: (value: T) => string | undefined): T[]
+        sortedNumerically(): number[]
+
+        indices(): number[]
+
+        get isEmpty(): boolean
+        get first(): T | undefined
+        get last(): T | undefined
+
+        toSet(): Set<T>
+
+        toChunked(chunkSize: number): T[][]
+    }
 }
 
 Object.defineProperty(Array.prototype, "isEmpty", {
