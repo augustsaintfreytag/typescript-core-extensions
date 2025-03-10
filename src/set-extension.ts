@@ -38,6 +38,38 @@ declare global {
 		toArray(): T[]
 		toString(): string
 	}
+
+	interface ReadonlySet<T> {
+		get isEmpty(): boolean
+
+		intersects<T>(otherSet: Set<T>): boolean
+		disjoint<T>(otherSet: Set<T>): boolean
+		equals<T>(otherSet: Set<T>): boolean
+
+		isSubset<T>(otherSet: Set<T>): boolean
+		isStrictSubset<T>(otherSet: Set<T>): boolean
+		isSuperset<T>(otherSet: Set<T>): boolean
+		isStrictSuperset<T>(otherSet: Set<T>): boolean
+
+		map<U>(block: (element: T, set: Set<T>) => U): U[]
+		flatMap<U>(block: (element: T, set: Set<T>) => U[]): U[]
+		compactMap<U>(block: (element: T, set: Set<T>) => U | undefined): NonNullable<U>[]
+		filter(block: (element: T, set: Set<T>) => boolean): Set<T>
+		reduce<U>(block: (reducedValue: U, element: T, set: Set<T>) => U, initialValue: U): U
+
+		formSubtraction<T>(otherSet: Set<T>): Set<T>
+		formUnion<T>(otherSet: Set<T>): Set<T>
+		formIntersection<T>(otherSet: Set<T>): Set<T>
+		formSymmetricDifference<T>(otherSet: Set<T>): Set<T>
+
+		sorted(): T[]
+		sorted(block: (lhs: T, rhs: T) => number): T[]
+
+		copy(): Set<T>
+
+		toArray(): T[]
+		toString(): string
+    }
 }
 
 Object.defineProperty(Set.prototype, "isEmpty", {
